@@ -3,7 +3,8 @@ using namespace std;
 
 void solve()
 {
-    
+    int n = 1%5;
+    cout<<n<<endl;
 }
 
 int main()
