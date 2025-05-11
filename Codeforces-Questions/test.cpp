@@ -4,12 +4,44 @@ using namespace std;
 
 void solve()
 {
-    string str1 = "abc";
-    string str2 = "abc";
+    ll n;
+    char c;
+    string str;
+    cin >> n >> c;
+    cin >> str;
 
-    if (str1 < str2)
+    if (c == 'g')
     {
-        cout << "hi" << '\n';
+        cout << 0 << '\n';
+    }
+    else
+    {
+        string dbl = str + str;
+
+        ll cnt = count(str.begin(), str.begin() + n, c);
+        int j = 0;
+        vector<ll> vec(cnt, 0);
+        vector<ll> res;
+
+        bool flag = false;
+        for (int i = 0; i < dbl.size(); i++)
+        {
+            if (dbl[i] == c && i < n)
+            {
+                flag = true;
+                continue;
+            }
+            if (flag)
+            {
+            }
+            if (dbl[i] == 'g')
+            {
+                res.push_back(count);
+                count = 0;
+                flag = false;
+            }
+        }
+        cout << *max_element(res.begin(), res.end()) << '\n';
     }
 }
 
