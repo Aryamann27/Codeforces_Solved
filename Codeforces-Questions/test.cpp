@@ -4,57 +4,45 @@ using namespace std;
 
 void solve()
 {
-    ll n;
-    char c;
-    string str;
-    cin >> n >> c;
-    cin >> str;
+    int n;
+    int m;
+    cin >> n;
+    vector<ll> vec(n);
+    map<int, int> mp;
 
-    if (c == 'g')
+    for (int i = 0; i < n; i++)
     {
-        cout << 0 << '\n';
+        cin >> vec[i];
+        mp[vec[i]] = i;
     }
-    else
+
+    cin >> m;
+    vector<ll> b(m);
+    for (int i = 0; i < m; i++)
     {
-        string dbl = str + str;
-
-        ll cnt = count(str.begin(), str.begin() + n, c);
-        int j = 0;
-        vector<ll> vec(cnt, 0);
-        vector<ll> res;
-
-        bool flag = false;
-        for (int i = 0; i < dbl.size(); i++)
-        {
-            if (dbl[i] == c && i < n)
-            {
-                flag = true;
-                continue;
-            }
-            if (flag)
-            {
-            }
-            if (dbl[i] == 'g')
-            {
-                res.push_back(count);
-                count = 0;
-                flag = false;
-            }
-        }
-        cout << *max_element(res.begin(), res.end()) << '\n';
+        cin >> b[i];
     }
+
+    ll v = 0, p = 0;
+    for (int i = 0; i < m; i++)
+    {
+        v += mp[b[i]] + 1;
+        p += (n - mp[b[i]]);
+    }
+    cout<<v<<" "<<p<<'\n';
 }
-
 int main()
 {
     cin.tie(0)->sync_with_stdio(0);
 
     int t;
-    cin >> t;
-    // t = 1;
+    // cin >> t;
+    t = 1;
+
     while (t--)
     {
         solve();
     }
+
     return 0;
 }
