@@ -6,29 +6,49 @@ void solve()
 {
     ll n;
     cin >> n;
+
     vector<ll> vec(n);
+
     for (int i = 0; i < n; i++)
     {
-        cin >> vec[i];
+        int x;
+        cin >> x;
+        vec[i] = abs(x);
     }
+
     ll req = vec[0];
     sort(vec.begin(), vec.end());
-    ll curr_med;
-    if (n % 2 == 1)
+
+    if (n & 1)
     {
-        curr_med = vec[(n + 1) / 2];
+        if (vec[n / 2] >= req)
+        {
+            cout << "YES\n";
+        }
+        else
+        {
+            cout << "NO\n";
+        }
     }
     else
     {
-        int m = n / 2;
-        curr_med = (vec[m] + vec[m + 1]) / 2;
-    }
-
-    if (curr_med < req)
-    {
-        for (int i = 0; i < (n / 2) + 1; i++)
+        if (vec[n / 2] >= req || vec[n / 2 - 1] >= req)
         {
-            
+            cout << "YES\n";
         }
+        else
+        {
+            cout << "NO\n";
+        }
+    }
+}
+
+main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        solve();
     }
 }

@@ -2,6 +2,7 @@
 using namespace std;
 #define mod 1000000007
 typedef long long ll;
+
 void solve()
 {
     ll n;
