@@ -5,35 +5,27 @@ typedef long long ll;
 
 void solve()
 {
-    string s, t;
-    cin >> s >> t;
-    int pt = (int)t.size() - 1;
+    ll n;
+    cin >> n;
 
-    for (int i = (int)s.size() - 1; i >= 0 && pt >= 0; --i)
+    ll k = cbrt(n);
+    ll ans;
+
+    map<ll, ll> mp;
+    for (ll i = 1; i <= k; i++)
     {
-        if (s[i] == t[pt])
+        mp[i * i * i]++;
+    }
+
+    for (ll i = 1; i <= k; i++)
+    {
+        if (mp[n - i * i * i] != 0)
         {
-            pt--;
-        }
-        else if (s[i] == '?')
-        {
-            s[i] = t[pt];
-            pt--;
+            cout << "YES\n";
+            return;
         }
     }
-
-    if (pt >= 0)
-    {
-        cout << "NO\n";
-    }
-    else
-    {
-        for (char &c : s)
-            if (c == '?')
-                c = 'a';
-
-        cout << "YES\n" << s << "\n";
-    }
+    cout << "NO\n";
 }
 
 int main()
